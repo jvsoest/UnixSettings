@@ -27,3 +27,7 @@ cp ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 
 #add scripts folder to path
 chmod -R +x ~/Repositories/UnixSettings/scripts
+
+#install python and libs
+brew install python
+pip install pydicom
