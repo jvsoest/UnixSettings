@@ -21,3 +21,6 @@ vim +PluginInstall +qall
 #set bash settings (git integration)
 cp ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
 cp ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
+
+#add scripts folder to path
+chmod -R +x ~/Repositories/UnixSettings/scripts
