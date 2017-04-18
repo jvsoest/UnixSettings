@@ -30,4 +30,4 @@ chmod -R +x ~/Repositories/UnixSettings/scripts
 
 #install python and libs
 brew install python
-pip install pydicom
+sudo pip install pydicom
