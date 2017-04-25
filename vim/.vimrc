@@ -23,5 +23,10 @@ Plugin 'majutsushi/tagbar'
 " set airline be shown always, not only when splits are created
 set laststatus=2
 
+" replace tabs by spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 call vundle#end()
 filetype plugin indent on
