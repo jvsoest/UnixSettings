@@ -1,0 +1,15 @@
+curFolder="$(pwd)"
+
+#delete CTP files
+rm -Rf ~/localApps/CTP/ctpConfig
+rm -Rf ~/localApps/CTP/ctpData
+rm -f ~/localApps/CTP/config.xml
+rm -Rf ~/localApps/CTP/_IMPORT
+rm -Rf ~/localApps/CTP/IMPORT
+rm -Rf ~/localApps/CTP/logs/*
+
+cp -R $curFolder/ctpConfig ~/localApps/CTP/ctpConfig
+cp $curFolder/config.xml ~/localApps/CTP/config.xml
+
+cd ~/localApps/CTP
+java -jar Runner.jar
