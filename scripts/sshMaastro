@@ -1,0 +1,1 @@
+ssh "$(< ~/Dropbox/l-11269.txt)"
