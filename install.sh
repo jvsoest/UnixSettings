@@ -28,6 +28,9 @@ cp ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 #add scripts folder to path
 chmod -R +x ~/Repositories/UnixSettings/scripts
 
+#set vim as default editor for git commits
+git config --global core.editor "vim"
+
 #install python and libs
 #brew install python
 sudo pip install pydicom
