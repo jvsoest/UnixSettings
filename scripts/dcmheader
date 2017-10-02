@@ -1,0 +1,1 @@
+python ~/Repositories/UnixSettings/scripts/dcmHeader.py $1
