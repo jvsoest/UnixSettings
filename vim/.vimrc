@@ -18,6 +18,13 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'majutsushi/tagbar'
+
+" R plugins
+Plugin 'vim-pandoc/vim-pandoc-syntax'
+Plugin 'vim-pandoc/vim-rmarkdown'
+Plugin 'Vim-R-plugin'
+
+Plugin 'seebi/semweb.vim'
 "}}}1
 
 " set airline be shown always, not only when splits are created
