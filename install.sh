@@ -1,8 +1,8 @@
 #install git and curl (if needed)
-sudo apt-get install git curl vim python python-pip
+#sudo apt-get install git curl vim python python-pip
 
 #install homebrew on macOS
-#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 #install pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
@@ -22,7 +22,7 @@ ln -s ~/Repositories/UnixSettings/vim/.vimrc ~/.vimrc
 vim +PluginInstall +qall
 
 #set bash settings (git integration)
-ln -s ~/Repositories/UnixSettings/bash/.bashrc_ubuntu ~/.bashrc
+ln -s ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
 ln -s ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 
 #add scripts folder to path
@@ -32,5 +32,6 @@ chmod -R +x ~/Repositories/UnixSettings/scripts
 git config --global core.editor "vim"
 
 #install python and libs
-#brew install python
-sudo pip install pydicom
+curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+python get-pip.py
+pip install pydicom
