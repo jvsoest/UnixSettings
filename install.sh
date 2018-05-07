@@ -1,5 +1,5 @@
 #install git and curl (if needed)
-sudo apt-get install git curl vim python
+sudo apt-get install git curl vim python screen
 
 #install homebrew on macOS
 #/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -23,6 +23,7 @@ vim +PluginInstall +qall
 
 #set bash settings (git integration)
 ln -s ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
+ln -s ~/Repositories/UnixSettings/bash/.screenrc ~/.screenrc
 ln -s ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 
 #add scripts folder to path
