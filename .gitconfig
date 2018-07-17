@@ -1,0 +1,10 @@
+[core]
+	autocrlf = true
+[log]
+  date = relative
+[format]
+  pretty = format:%C(yellow)%h %Cblue%>(12)%ad %Cgreen%<(7)%aN%Cred%d %Creset%s
+[alias]
+  lg = log --abbrev-commit --all --graph
+[credential]
+	helper = cache
