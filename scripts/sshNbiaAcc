@@ -1,0 +1,1 @@
+ssh -L 23080:127.0.0.1:23080 -L 23104:127.0.0.1:23104 johanvs@app19-acc-vh.trait.vancis.nl
