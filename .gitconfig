@@ -1,5 +1,6 @@
 [core]
-  autocrlf = true
+    #autoclrf windows only
+  #autocrlf = true
 	editor = vim
 [log]
   date = relative
