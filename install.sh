@@ -1,8 +1,16 @@
-#install git and curl (if needed)
-sudo apt-get install git curl vim python screen
+printf "Select your OS:\n1 = Ubuntu (Debian)\n2 = MacOS\nChoice [1,2]: "
+read osChoice
 
-#install homebrew on macOS
-#/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ $osChoice == "1" ]; then
+    #install git and curl (if needed)
+    sudo apt-get install git curl vim python screen
+fi
+
+
+if [ $osChoice == "2" ]; then
+    #install homebrew on macOS
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 #install pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
@@ -22,7 +30,12 @@ ln -s ~/Repositories/UnixSettings/vim/.vimrc ~/.vimrc
 vim +PluginInstall +qall
 
 #set bash settings (git integration)
-ln -s ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
+if [ $osChoice == "1" ]; then
+    ln -s ~/Repositories/UnixSettings/bash/.bashrc_ubuntu ~/.bashrc
+fi
+if [ $osChoice == "2" ]; then
+    ln -s ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
+fi
 ln -s ~/Repositories/UnixSettings/bash/.screenrc ~/.screenrc
 ln -s ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 
@@ -30,7 +43,7 @@ ln -s ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 chmod -R +x ~/Repositories/UnixSettings/scripts
 
 #set vim as default editor for git commits
-git config --global core.editor "vim"
+ln -s ~/Repositories/UnixSettings/.gitconfig ~/.gitconfig
 
 #install python and libs
 curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py

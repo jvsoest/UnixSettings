@@ -1,5 +1,6 @@
 [core]
-	autocrlf = true
+  autocrlf = true
+	editor = vim
 [log]
   date = relative
 [format]
@@ -7,4 +8,7 @@
 [alias]
   lg = log --abbrev-commit --all --graph
 [credential]
-	helper = cache
+  helper = cache
+[user]
+	email = info@johanvansoest.nl
+	name = Johan van Soest
