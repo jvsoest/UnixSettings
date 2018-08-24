@@ -12,6 +12,9 @@ if [ $osChoice == "2" ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+printf "Install pip and pydicom? [Y/n]"
+read pythonChoice
+
 #install pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
@@ -45,7 +48,10 @@ chmod -R +x ~/Repositories/UnixSettings/scripts
 #set vim as default editor for git commits
 ln -s ~/Repositories/UnixSettings/.gitconfig ~/.gitconfig
 
-#install python and libs
-curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
-sudo python get-pip.py
-sudo pip install pydicom
+if [ $pythonChoice != "n" ]; then
+    #install python and libs
+    curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
+    sudo python get-pip.py
+    sudo pip install pydicom
+fi
+
