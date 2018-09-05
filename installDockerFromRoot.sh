@@ -1,3 +1,6 @@
+# Add GPG library
+apt update && apt install -y gnupg
+
 #add GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
