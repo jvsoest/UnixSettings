@@ -3,13 +3,14 @@ read osChoice
 
 if [ $osChoice == "1" ]; then
     #install git and curl (if needed)
-    sudo apt-get install git curl vim python screen
+    sudo apt-get install git curl vim python screen tmux
 fi
 
 
 if [ $osChoice == "2" ]; then
     #install homebrew on macOS
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install tmux
 fi
 
 printf "Install pip and pydicom? [Y/n]"
@@ -40,6 +41,7 @@ if [ $osChoice == "2" ]; then
     ln -s ~/Repositories/UnixSettings/bash/.bashrc ~/.bashrc
 fi
 ln -s ~/Repositories/UnixSettings/bash/.screenrc ~/.screenrc
+ln -s ~/Repositories/UnixSettings/tmux.conf ~/.tmux.conf
 ln -s ~/Repositories/UnixSettings/bash/.bash_profile ~/.bash_profile
 
 #add scripts folder to path
