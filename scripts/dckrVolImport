@@ -1,0 +1,21 @@
+#!/bin/bash
+get_abs_filename() {
+  # $1 : relative filename
+  echo "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+}
+
+file_name=$(get_abs_filename $1)
+volume_name=$2
+
+if [ $# -lt 2 ]
+then
+    echo "Not enough arguments supplied\n\nUse dockerVolumeImport <file_path> <volume_name>"
+    exit
+fi
+
+docker volume create $volume_name
+
+docker run --rm \
+    -v $volume_name:/volume/ \
+    -v $file_name:/backup.tar.gz \
+    alpine sh -c "tar -C /volume/ -xzvf /backup.tar.gz"

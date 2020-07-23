@@ -1,0 +1,18 @@
+volume_name=$1
+target_folder=$(pwd)
+
+if [ $# -eq 0 ]
+then
+    echo "No input arguments supplied\n\nUse dockerVolumeExport <volume_name> [<target_folder>]\n\nIn case no target folder given, current folder is used."
+    exit
+fi
+
+if [ $# -gt 1 ]
+then
+    target_folder=$2
+fi
+
+docker run --rm \
+    -v $volume_name:/volume \
+    -v $target_folder:/backup \
+    alpine tar -czvf /backup/${volume_name}.tar.gz -C /volume ./

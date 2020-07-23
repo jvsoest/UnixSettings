@@ -1,0 +1,14 @@
+#!/bin/bash
+source_volume=$1
+target_folder=$2
+
+if [ $# -lt 2 ]
+then
+    echo "Not enough arguments supplied\n\nUse dckrVolCopyOut <source_volume_name> <target_folder>"
+    exit
+fi
+
+docker run --rm \
+    -v $source_volume:/volume/ \
+    -v $target_folder:/target_folder/ \
+    alpine sh -c "cp -R /volume/* /target_folder"
