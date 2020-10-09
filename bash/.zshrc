@@ -70,6 +70,9 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git docker)
 
+# macos disable check file permissions
+ZSH_DISABLE_COMPFIX="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -100,4 +103,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Add scripts
 SCRIPTS=$HOME'/Repositories/UnixSettings/scripts'
-export PATH=$SCRIPTS:$PATH
+MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
+export MAVEN_HOME=$MAVEN_HOME
+export PATH=$SCRIPTS:$MAVEN_HOME/bin:$PATH
+
+# add python3 alias to python
+alias python=/usr/local/bin/python3

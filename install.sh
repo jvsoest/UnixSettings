@@ -46,3 +46,10 @@ if [ $pythonChoice != "n" ]; then
     sudo pip install pydicom
 fi
 
+# install maven
+mkdir -p ~/StandAlone/Apps
+cd ~/StandAlone/Apps
+curl -o apache-maven-3.6.3-bin.tar.gz https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+
+tar -xzvf apache-maven-3.6.3-bin.tar.gz
+rm apache-maven-3.6.3-bin.tar.gz
