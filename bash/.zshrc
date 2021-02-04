@@ -107,5 +107,6 @@ MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
 export MAVEN_HOME=$MAVEN_HOME
 export PATH=$SCRIPTS:$MAVEN_HOME/bin:$PATH
 
-# add python3 alias to python
-alias python=/usr/local/bin/python3
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

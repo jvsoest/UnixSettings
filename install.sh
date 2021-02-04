@@ -1,8 +1,12 @@
-printf "Select your OS:\n1 = Ubuntu (Debian)\n2 = MacOS\nChoice [1,2]: "
+# TODO:
+#  - check https://github.com/neoclide/coc.nvim
+
+printf "Select your OS:\n1 = Ubuntu (Debian)\n2 = MacOS\n\nFor MacOS, XCode needs to be installed beforehand\nChoice [1,2]: "
 read osChoice
 
 printf "Install pip and pydicom? [Y/n]"
 read pythonChoice
+
 
 if [ $osChoice == "1" ]; then
     #install git and curl (if needed)
@@ -11,9 +15,27 @@ fi
 
 
 if [ $osChoice == "2" ]; then
+    printf "Install java and maven? [Y/n]"
+    read javaMavenChoice
+    
+    xcode-select --install
+    sudo xcodebuild -license
+    
+    #install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    
     #install homebrew on macOS
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install tmux
+    brew install tmux pyenv
+    pyenv install 3.8.7
+    pyenv global 3.8.7
+
+    if [ $javaMavenChoice != "n" ]; then
+        # Install OpenJDK 11
+        brew install java11
+        sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+        brew install maven
+    fi
 fi
 
 #install pathogen
@@ -45,11 +67,3 @@ if [ $pythonChoice != "n" ]; then
     sudo python get-pip.py
     sudo pip install pydicom
 fi
-
-# install maven
-mkdir -p ~/StandAlone/Apps
-cd ~/StandAlone/Apps
-curl -o apache-maven-3.6.3-bin.tar.gz https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-
-tar -xzvf apache-maven-3.6.3-bin.tar.gz
-rm apache-maven-3.6.3-bin.tar.gz
