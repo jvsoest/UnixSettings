@@ -1,4 +1,4 @@
-import dicom
+import pydicom
 import sys
 
-print(dicom.read_file(sys.argv[1]))
+print(pydicom.dcmread(sys.argv[1]))
