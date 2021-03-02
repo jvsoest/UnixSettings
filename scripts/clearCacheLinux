@@ -1,1 +1,3 @@
+# Script based on https://devblogs.microsoft.com/commandline/memory-reclaim-in-the-windows-subsystem-for-linux-2/
+
 sudo bash -c "echo 1 > /proc/sys/vm/drop_caches"
