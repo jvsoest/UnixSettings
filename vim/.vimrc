@@ -1,6 +1,7 @@
 syntax on
 execute pathogen#infect()
 set nocompatible
+colorscheme default
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
