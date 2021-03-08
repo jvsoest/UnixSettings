@@ -1,6 +1,7 @@
 import argparse
 import rdflib
 import os
+import pandas as pd
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Perform a SPARQL query on an RDF file')
@@ -22,23 +23,29 @@ query = None
 queriesFolder = os.path.join(os.path.expanduser('~'), "Repositories", "UnixSettings", "python", "sparqlQueries")
 if query is None:
     if os.path.exists(inputArgs.sparqlQuery):
-        print("Using given query file")
+#        print("Using given query file")
         with open(inputArgs.sparqlQuery) as f:
             query = f.read()
 if query is None:
     fileToSearch = os.path.join(queriesFolder, inputArgs.sparqlQuery) + ".sparql"
-    print(fileToSearch)
+#    print(fileToSearch)
     if os.path.exists(fileToSearch):
-        print("Using existing query")
+#        print("Using existing query")
         with open(fileToSearch) as f:
             query = f.read()
 if query is None:
-    print("Using given string as query")
+#    print("Using given string as query")
     query = inputArgs.sparqlQuery
 
 # Execute the actual query
 qResult = g.query(query)
 
 # Loop over query results, and visualize them
-for row in qResult.bindings:
-    print(row)
+#for row in qResult.bindings:
+#    print(row)
+columns = [str(v) for v in qResult.vars]
+df = pd.DataFrame(qResult, columns=columns)
+with pd.option_context('display.max_rows', None,
+        'display.max_columns', None,
+        'display.max_colwidth', None):
+    print(df.to_string(index=False))
