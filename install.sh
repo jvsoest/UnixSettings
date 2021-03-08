@@ -67,3 +67,9 @@ if [ $pythonChoice != "n" ]; then
     sudo python get-pip.py
     sudo pip install pydicom
 fi
+
+# Install time tracker
+crontab -l > mycron
+echo "* * * * * sh ~/Repositories/UnixSettings/track_time.sh" >> mycron
+crontab mycron
+rm mycron
