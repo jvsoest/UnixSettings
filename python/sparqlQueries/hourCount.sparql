@@ -1,0 +1,9 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX tt: <http://jvsoest.eu/ontology/timeTrack.owl#>
+
+select ?hour (COUNT(*) AS ?minuteCount)
+where {
+    ?s tt:at_time ?dateTime.
+    BIND (hours(?dateTime) as ?hour).
+} GROUP BY ?hour
