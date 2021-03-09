@@ -1,1 +1,1 @@
-python ~/Repositories/UnixSettings/scripts/dcmHeader.py $1
+python ~/Repositories/UnixSettings/python/dcmHeader.py $1
