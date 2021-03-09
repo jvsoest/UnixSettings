@@ -1,0 +1,1 @@
+echo $1>$HOME/.track_time/category.txt
