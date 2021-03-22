@@ -26,7 +26,7 @@ if [ $osChoice == "2" ]; then
     
     #install homebrew on macOS
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install tmux pyenv pandoc git-lfs readline xz
+    brew install tmux pyenv pandoc git-lfs readline xz exiftool
     pyenv install 3.8.7
     pyenv global 3.8.7
 
