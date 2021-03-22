@@ -1,0 +1,1 @@
+exiftool -p -r -d %Y/%m/%d/ '-filename<${datetimeoriginal}${FileName}' ./
