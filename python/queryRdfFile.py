@@ -2,6 +2,7 @@ import argparse
 import rdflib
 import os
 import pandas as pd
+import glob
 import time
 
 start_time = time.time()
@@ -16,7 +17,9 @@ inputArgs = parser.parse_args()
 g = rdflib.Graph()
 
 # Read TTL file
-result = g.parse(inputArgs.rdfFilePath, format=rdflib.util.guess_format(inputArgs.rdfFilePath))
+filesFound = glob.glob(inputArgs.rdfFilePath, recursive=True)
+for filePath in filesFound:
+    result = g.parse(filePath, format=rdflib.util.guess_format(filePath))
 
 # Determine whether to:
 #  a) read a sparql query file
@@ -53,4 +56,4 @@ with pd.option_context('display.max_rows', None,
         'display.max_colwidth', None):
     print(df.to_string(index=False))
 
-print ("--- %s seconds ---" % (time.time() - start_time))
+print("--- %s seconds ---" % (time.time() - start_time))
