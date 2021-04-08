@@ -2,6 +2,9 @@ import argparse
 import rdflib
 import os
 import pandas as pd
+import time
+
+start_time = time.time()
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Perform a SPARQL query on an RDF file')
@@ -49,3 +52,5 @@ with pd.option_context('display.max_rows', None,
         'display.max_columns', None,
         'display.max_colwidth', None):
     print(df.to_string(index=False))
+
+print ("--- %s seconds ---" % (time.time() - start_time))
