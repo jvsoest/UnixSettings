@@ -1,3 +1,3 @@
 #!/bin/bash
 
-for track in **/*.flac; do ffmpeg -i "$track" -acodec alac -vcodec copy "$track.m4a"; done
+for track in {**,.}/*.flac; do ffmpeg -i "$track" -acodec alac -vcodec copy "$track.m4a"; done
