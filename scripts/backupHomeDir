@@ -1,0 +1,2 @@
+# https://snapshooter.com/learn/linux/incremental-tar
+tar --create --gzip --listed-incremental=/mnt/c/Users/johan/wsl_backup/data.sngz --file=/mnt/c/Users/johan/wsl_backup/$(date +'%Y%m%d_%H%M').tgz ~
