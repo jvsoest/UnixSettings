@@ -1,0 +1,1 @@
+vim ~/OneDrive/Grip/DailyLogs/$(date '+%Y_%m_%d').md

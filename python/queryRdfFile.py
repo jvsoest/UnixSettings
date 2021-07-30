@@ -2,7 +2,9 @@ import argparse
 import rdflib
 import os
 import pandas as pd
+import glob
 import time
+import re
 
 start_time = time.time()
 
@@ -15,8 +17,21 @@ inputArgs = parser.parse_args()
 # Create graph
 g = rdflib.Graph()
 
+regex = re.compile(
+        r'^(?:http|ftp)s?://' # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+        r'localhost|' #localhost...
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+        r'(?::\d+)?' # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+
 # Read TTL file
-result = g.parse(inputArgs.rdfFilePath, format=rdflib.util.guess_format(inputArgs.rdfFilePath))
+if re.match(regex, inputArgs.rdfFilePath) is not None:
+    g.parse(inputArgs.rdfFilePath, format=rdflib.util.guess_format(inputArgs.rdfFilePath))
+else:
+    filesFound = glob.glob(inputArgs.rdfFilePath, recursive=True)
+    for filePath in filesFound:
+        result = g.parse(filePath, format=rdflib.util.guess_format(filePath))
 
 # Determine whether to:
 #  a) read a sparql query file
@@ -53,4 +68,4 @@ with pd.option_context('display.max_rows', None,
         'display.max_colwidth', None):
     print(df.to_string(index=False))
 
-print ("--- %s seconds ---" % (time.time() - start_time))
+print("--- %s seconds ---" % (time.time() - start_time))

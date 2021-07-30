@@ -1,1 +1,2 @@
 queryRdfFile ~/.track_time/$(date '+%Y%m%d').ttl hourCount
+queryRdfFile ~/.track_time/$(date '+%Y%m%d').ttl hourSummary
