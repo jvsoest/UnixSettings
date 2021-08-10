@@ -6,6 +6,7 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 set foldmethod=marker
+set wrap linebreak nolist breakindent
 nnoremap <space> za
 vnoremap <space> za
 
