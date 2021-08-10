@@ -29,6 +29,14 @@ if [ $osChoice == "2" ]; then
     brew install tmux pyenv pandoc git-lfs readline xz exiftool
     pyenv install 3.8.7
     pyenv global 3.8.7
+    
+    # Set the correct python environment to work
+    if command -v pyenv 1>/dev/null 2>&1; then
+      eval "$(pyenv init -)"
+    fi
+
+    # Install Azure-CLI (which is dependent on Python)
+    brew install azure-cli
 
     if [ $javaMavenChoice != "n" ]; then
         # Install OpenJDK 11
