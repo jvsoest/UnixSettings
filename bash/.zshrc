@@ -114,4 +114,5 @@ fi
 
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
   ln -sf /mnt/c/Users/johan/OneDrive ./
+  ln -sf OneDrive/Desktop ./
 fi
