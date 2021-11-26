@@ -1,1 +1,17 @@
-vim ~/OneDrive/Grip/DailyLogs/$(date '+%Y_%m_%d').md
+myDate=$(date '+%Y_%m_%d')
+folderLoc=~/OneDrive/Grip/DailyLogs/
+
+if [ $# -gt 0 ];
+  then
+    myDate=$1
+fi
+
+filePath=$folderLoc$myDate.md
+
+if [ ! -f "$filePath" ]; then
+  echo "# $(date '+%d-%m-%Y')" >> $filePath
+  echo >> $filePath
+  echo >> $filePath
+fi
+
+vim $filePath
