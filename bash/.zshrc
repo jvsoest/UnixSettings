@@ -103,11 +103,13 @@ source $ZSH/oh-my-zsh.sh
 
 # Add scripts
 SCRIPTS=$HOME'/Repositories/UnixSettings/scripts'
+SCRIPTS_US=$HOME'/Repositories/cmd_tricks/_nix'
 MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
 R_HOME='/Library/Frameworks/R.framework/Resources'
+OC=$HOME'/StandAlone/oc'
 export MAVEN_HOME=$MAVEN_HOME
-export PATH=$SCRIPTS:$MAVEN_HOME/bin:$R_HOME:$PATH
+export PATH=$SCRIPTS:$SCRIPTS_US:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
 
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
 fi
