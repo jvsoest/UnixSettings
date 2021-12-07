@@ -113,3 +113,8 @@ export PATH=$SCRIPTS:$SCRIPTS_US:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
+
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+  ln -sf /mnt/c/Users/johan/OneDrive ./
+  ln -sf OneDrive/Desktop ./
+fi

@@ -4,20 +4,34 @@
 printf "Select your OS:\n1 = Ubuntu (Debian)\n2 = MacOS\n\nFor MacOS, XCode needs to be installed beforehand\nChoice [1,2]: "
 read osChoice
 
-printf "Install pip and pydicom? [Y/n]"
-read pythonChoice
+printf "Install time tracker? [Y/n]"
+read timeTrackerChoice
 
+printf "Install java and maven? [Y/n]"
+read javaMavenChoice
 
 if [ $osChoice == "1" ]; then
+    sudo apt update
+    sudo apt upgrade -y
+
     #install git and curl (if needed)
-    sudo apt-get install git curl vim python screen tmux
+    sudo apt install -y git curl vim screen tmux zsh python-is-python3 pandoc git-lfs exiftool
+
+    #install oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # Install Azure CLI
+    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+    # Install Java and Maven
+    if [ $javaMavenChoice == "Y" ]; then
+      sudo add-apt-repository ppa:openjdk-r/ppa
+      sudo apt-get update
+      sudo apt install openjdk-11-jdk maven
+    fi
 fi
 
-
 if [ $osChoice == "2" ]; then
-    printf "Install java and maven? [Y/n]"
-    read javaMavenChoice
-    
     xcode-select --install
     sudo xcodebuild -license
     
@@ -38,7 +52,7 @@ if [ $osChoice == "2" ]; then
     # Install Azure-CLI (which is dependent on Python)
     brew install azure-cli
 
-    if [ $javaMavenChoice != "n" ]; then
+    if [ $javaMavenChoice == "Y" ]; then
         # Install OpenJDK 11
         brew install java11
         sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
@@ -69,15 +83,10 @@ chmod -R +x ~/Repositories/UnixSettings/scripts
 #set vim as default editor for git commits
 ln -s ~/Repositories/UnixSettings/.gitconfig ~/.gitconfig
 
-if [ $pythonChoice != "n" ]; then
-    #install python and libs
-    curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py
-    sudo python get-pip.py
-    sudo pip install pydicom
-fi
-
 # Install time tracker
-crontab -l > mycron
-echo "* * * * * sh ~/Repositories/UnixSettings/track_time.sh" >> mycron
-crontab mycron
-rm mycron
+if [ $timeTrackerChoice == "Y" ]; then
+    crontab -l > mycron
+    echo "* * * * * sh ~/Repositories/UnixSettings/track_time.sh" >> mycron
+    crontab mycron
+    rm mycron
+fi
