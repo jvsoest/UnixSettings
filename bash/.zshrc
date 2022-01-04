@@ -115,6 +115,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
-  ln -sf /mnt/c/Users/johan/OneDrive ./
-  ln -sf OneDrive/Desktop ./
+  ln -sf /mnt/c/Users/johan/OneDrive $HOME
+  ln -sf OneDrive/Desktop $HOME
 fi
