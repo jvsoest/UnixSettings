@@ -14,4 +14,4 @@ if [ ! -f "$filePath" ]; then
   echo >> $filePath
 fi
 
-vim $filePath
+vim "+normal G$" $filePath
