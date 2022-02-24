@@ -107,6 +107,13 @@ SCRIPTS_US=$HOME'/Repositories/cmd_tricks/_nix'
 MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
 R_HOME='/Library/Frameworks/R.framework/Resources'
 OC=$HOME'/StandAlone/oc'
+
+if [[ -n "$WSL_DISTRO_NAME" ]]; then
+    # Remove windows reference to pyenv as windows path variables are put into WSL path
+    PATH=$(echo $PATH | sed -e 's|/mnt/c/Users/johan/.pyenv/pyenv-win/shims\:||')
+    PATH=$(echo $PATH | sed -e 's|/mnt/c/Users/johan/.pyenv/pyenv-win/bin\:||')
+fi
+
 export MAVEN_HOME=$MAVEN_HOME
 export PATH=$SCRIPTS:$SCRIPTS_US:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
 
