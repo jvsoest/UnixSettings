@@ -5,11 +5,14 @@ import pandas as pd
 import glob
 import time
 import re
+from tabulate import tabulate
 
 start_time = time.time()
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='Perform a SPARQL query on an RDF file')
+parser.add_argument("-t", '--time', action=argparse.BooleanOptionalAction, help='Show time needed to execute script')
+parser.add_argument("-v", '--verbose', action=argparse.BooleanOptionalAction, help='Verbose listing of URIs (default: prefix only)')
 parser.add_argument('rdfFilePath', help='Path to the RDF file')
 parser.add_argument('sparqlQuery', help='Path to the SPARQL query file, Query template, or the actual query string')
 inputArgs = parser.parse_args()
@@ -63,9 +66,19 @@ qResult = g.query(query)
 #    print(row)
 columns = [str(v) for v in qResult.vars]
 df = pd.DataFrame(qResult, columns=columns)
+
+# Retrieve namespaces from graph object
+if not inputArgs.verbose:
+    for ns in g.namespaces():
+        prefix = ns[0]
+        fullString = ns[1]
+        df = df.replace(fullString, prefix + ":", regex=True)
+
 with pd.option_context('display.max_rows', None,
         'display.max_columns', None,
         'display.max_colwidth', None):
-    print(df.to_string(index=False))
+    tableFormat = 'github'
+    print(tabulate(df, headers='keys', showindex=False, tablefmt=tableFormat))
 
-print("--- %s seconds ---" % (time.time() - start_time))
+if inputArgs.time:
+    print("--- %s seconds ---" % (time.time() - start_time))
