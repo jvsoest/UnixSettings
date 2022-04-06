@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # PS1 adaptation from https://gist.github.com/SteelPangolin/187c7148b90e04f0855f
-local hostname="%{$fg_bold[cyan]%}%n@%m"
+local hostname="%{$fg_bold[green]%}%n@%m"
 local ret_status="%(?:%{$fg_bold[green]%}➜:%{$fg_bold[red]%}➜%s)"
 PROMPT='${hostname} ${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
@@ -123,6 +123,10 @@ if [[ -n "$WSL_DISTRO_NAME" ]]; then
     # Remove windows reference to pyenv as windows path variables are put into WSL path
     PATH=$(echo $PATH | sed -e 's|/mnt/c/Users/johan/.pyenv/pyenv-win/shims\:||')
     PATH=$(echo $PATH | sed -e 's|/mnt/c/Users/johan/.pyenv/pyenv-win/bin\:||')
+
+    # Make symbolic links to onedrive folders often used
+    ln -sf /mnt/c/Users/johan/OneDrive $HOME
+    ln -sf OneDrive/Desktop $HOME
 fi
 
 export MAVEN_HOME=$MAVEN_HOME
@@ -131,9 +135,4 @@ export PATH=$SCRIPTS:$SCRIPTS_US:$JAVA_HOME/bin:$MAVEN_HOME/bin:$R_HOME:$OC:$PAT
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
-fi
-
-if [[ -n "$WSL_DISTRO_NAME" ]]; then
-  ln -sf /mnt/c/Users/johan/OneDrive $HOME
-  ln -sf OneDrive/Desktop $HOME
 fi
