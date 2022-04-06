@@ -101,9 +101,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# PS1 adaptation from https://gist.github.com/SteelPangolin/187c7148b90e04f0855f
+local hostname="%{$fg_bold[cyan]%}%m"
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
+PROMPT='${hostname} ${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+
 # Add scripts
 SCRIPTS=$HOME'/Repositories/UnixSettings/scripts'
 SCRIPTS_US=$HOME'/Repositories/cmd_tricks/_nix'
+JAVA_HOME='/usr/local/Cellar/openjdk/17.0.2/libexec/openjdk.jdk/Contents/Home'
 MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
 R_HOME='/Library/Frameworks/R.framework/Resources'
 OC=$HOME'/StandAlone/oc'
@@ -115,7 +126,8 @@ if [[ -n "$WSL_DISTRO_NAME" ]]; then
 fi
 
 export MAVEN_HOME=$MAVEN_HOME
-export PATH=$SCRIPTS:$SCRIPTS_US:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
+export JAVA_HOME=$JAVA_HOME
+export PATH=$SCRIPTS:$SCRIPTS_US:$JAVA_HOME/bin:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
