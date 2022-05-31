@@ -39,3 +39,6 @@ set expandtab
 
 call vundle#end()
 filetype plugin indent on
+
+let g:NERDTreeHijackNetrw = 1
+au VimEnter NERD_tree_1 enew | execute 'NERDTree '.argv()[0]
