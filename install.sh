@@ -72,6 +72,7 @@ ln -s ~/Repositories/UnixSettings/vim/.vimrc ~/.vimrc
 
 #install plugins configured in .vimrc
 vim +PluginInstall +qall
+# To update all plugins: vim +PluginUpdate +qall
 
 mv ~/.zshrc ~/.zshrc_backup
 ln -s ~/Repositories/UnixSettings/bash/.zshrc ~/.zshrc
