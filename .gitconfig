@@ -13,3 +13,7 @@
 [user]
 	email = info@johanvansoest.nl
 	name = Johan van Soest
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
