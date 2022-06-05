@@ -14,4 +14,7 @@ if [ ! -f "$filePath" ]; then
   echo >> $filePath
 fi
 
-vim "+normal G$" $filePath
+code ~/OneDrive/Grip && code $filePath
+if [ $? -ne 0 ]; then
+  vim "+normal G$" $filePath
+fi
