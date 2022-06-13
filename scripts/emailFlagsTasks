@@ -1,0 +1,1 @@
+python $HOME/Repositories/UnixSettings/python/email_flags_things.py "$@"
