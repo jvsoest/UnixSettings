@@ -5,7 +5,7 @@ import pandas as pd
 import glob
 import time
 import re
-from tabulate import tabulate
+import tabulate
 
 start_time = time.time()
 
@@ -13,6 +13,7 @@ start_time = time.time()
 parser = argparse.ArgumentParser(description='Perform a SPARQL query on an RDF file')
 parser.add_argument("-t", '--time', action=argparse.BooleanOptionalAction, help='Show time needed to execute script')
 parser.add_argument("-v", '--verbose', action=argparse.BooleanOptionalAction, help='Verbose listing of URIs (default: prefix only)')
+parser.add_argument("-of", '--output-format', default='github', choices=tabulate.multiline_formats, help='Output format (default: github markdown)')
 parser.add_argument('rdfFilePath', help='Path to the RDF file')
 parser.add_argument('sparqlQuery', help='Path to the SPARQL query file, Query template, or the actual query string')
 inputArgs = parser.parse_args()
@@ -77,8 +78,8 @@ if not inputArgs.verbose:
 with pd.option_context('display.max_rows', None,
         'display.max_columns', None,
         'display.max_colwidth', None):
-    tableFormat = 'github'
-    print(tabulate(df, headers='keys', showindex=False, tablefmt=tableFormat))
+    tableFormat = inputArgs.output_format
+    print(tabulate.tabulate(df, headers='keys', showindex=False, tablefmt=tableFormat))
 
 if inputArgs.time:
     print("--- %s seconds ---" % (time.time() - start_time))
