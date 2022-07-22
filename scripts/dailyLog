@@ -1,5 +1,5 @@
-myDate=$(date '+%Y_%m_%d')
-folderLoc=~/OneDrive/Grip/DailyLogs/
+myDate=$(date '+%Y-%m-%d')
+folderLoc=$HOME/KnowledgeBase/DailyLogs/
 
 if [ $# -gt 0 ];
   then
