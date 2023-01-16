@@ -1,0 +1,4 @@
+pkill Calendar
+cd ~/Library/Calendars
+rm Calendar.sq*
+echo "Removed local database, rebuilding may take minutes"
