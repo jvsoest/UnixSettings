@@ -1,0 +1,11 @@
+#! /bin/bash
+
+docker run --rm -d \
+    --name vantage6-ui \
+    -p 80:80 \
+    -e "SERVER_URL=$1" \
+    -e "API_PATH=/api" \
+    harbor2.vantage6.ai/infrastructure/ui
+
+echo 'attempt to open http://localhost/'
+python -m webbrowser http://localhost/
