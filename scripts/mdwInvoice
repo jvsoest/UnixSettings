@@ -1,4 +1,4 @@
 #! /bin/bash
-script_home=/Users/johan/Repositories/MDW/mdw_management_scripts
-python=$script_home/venv/bin/python
+script_home=/Users/johan/Repositories/MDW/management_scripts
+python=$script_home/env/bin/python
 $python $script_home/run.py "$@"
