@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# Navigate to the profiles directory
+cd ~/Library/Application\ Support/Microsoft\ Edge
+
+# List out the profile directories. Note that the directory name is what is used in the launch command, *not* necessarily the friendly name of the profile you see in Microsoft Edge.app
+find ./ -type f -name Preferences

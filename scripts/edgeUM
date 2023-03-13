@@ -1,0 +1,4 @@
+#! /bin/bash
+
+# Let's say "Profile 1" is one of our directories
+"/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge" --profile-directory="Profile 3" $@
