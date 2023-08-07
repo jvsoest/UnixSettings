@@ -1,1 +1,1 @@
-open -a ScreenSaverEngine
+open -a ScreenSaverEngine && caffeinate -ds
