@@ -1,4 +1,5 @@
 #! /bin/bash
 
 # This command launches the screensaver on macOS (which effectively locks the pc), and starts a caffeine session to prevent the PC going to sleep.
+echo "Mind to ctrl-c the caffeinate session after logging in again!"
 open -a ScreenSaverEngine && caffeinate -ds
