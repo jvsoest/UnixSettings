@@ -1,20 +1,23 @@
 myDate=$(date '+%Y-%m-%d')
-folderLoc=$HOME/KnowledgeBase/DailyLogs/
+folderLoc=$HOME/Library/Mobile\ Documents/iCloud~md~obsidian/Documents/KnowledgeBase/DailyLogs/
 
-if [ $# -gt 0 ];
-  then
-    myDate=$1
-fi
+# if [ $# -gt 0 ];
+#   then
+#     myDate=$1
+# fi
 
 filePath=$folderLoc$myDate.md
 
 if [ ! -f "$filePath" ]; then
-  echo "# $(date '+%d-%m-%Y')" >> $filePath
-  echo >> $filePath
-  echo >> $filePath
+  echo "# $(date '+%d-%m-%Y')" >> "$filePath"
+  echo >> "$filePath"
+  echo >> "$filePath"
 fi
 
-#code ~/OneDrive/Grip && code $filePath
-#if [ $? -ne 0 ]; then
-  vim "+normal G$" $filePath
-#fi
+if [ $# -eq 0 ]; then
+  vim vim "+normal G$" "$filePath"
+else
+  if [ $1 == "-a" ]; then
+    echo $2 >> "$filePath"
+  fi
+fi
