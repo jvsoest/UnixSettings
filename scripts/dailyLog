@@ -15,7 +15,7 @@ if [ ! -f "$filePath" ]; then
 fi
 
 if [ $# -eq 0 ]; then
-  vim vim "+normal G$" "$filePath"
+  vim "+normal G$" "$filePath"
 else
   if [ $1 == "-a" ]; then
     echo $2 >> "$filePath"
