@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker)
+plugins=(git docker tmux)
 
 # macos disable check file permissions
 ZSH_DISABLE_COMPFIX="true"
@@ -111,6 +111,8 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}) "
 
+ZSH_TMUX_AUTOSTART='true'
+
 # Add scripts
 SCRIPTS=$HOME'/Repositories/UnixSettings/scripts'
 SCRIPTS_US=$HOME'/Repositories/cmd_tricks/_nix'
@@ -136,3 +138,6 @@ export PATH=$SCRIPTS:$SCRIPTS_US:$JAVA_HOME/bin:$MAVEN_HOME/bin:$R_HOME:$OC:$PAT
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init --path)"
 fi
+
+alias keepassxc-cli="/Applications/KeePassXC.app/Contents/MacOS/keepassxc-cli"
+alias sed="gsed"
