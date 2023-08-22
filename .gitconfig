@@ -11,7 +11,7 @@
 [credential]
   helper = cache
 [user]
-	email = info@johanvansoest.nl
+	email = j.vansoest@maastrichtuniversity.nl
 	name = Johan van Soest
 [pull]
 	rebase = false
