@@ -1,4 +1,6 @@
 pkill Calendar
 cd ~/Library/Calendars
 rm Calendar.sq*
+launchctl stop com.apple.CalendarAgent
+launchctl start com.apple.CalendarAgent
 echo "Removed local database, rebuilding may take minutes"
