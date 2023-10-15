@@ -1,0 +1,1 @@
+shnsplit -f "$1" -t %n-%t -o flac "$2"
