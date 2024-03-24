@@ -120,6 +120,7 @@ JAVA_HOME='/usr/local/Cellar/openjdk/17.0.2/libexec/openjdk.jdk/Contents/Home'
 MAVEN_HOME=$HOME'/StandAlone/Apps/apache-maven-3.6.3'
 R_HOME='/Library/Frameworks/R.framework/Resources'
 OC=$HOME'/StandAlone/oc'
+PYTHON_BIN='/home/johan/.local/bin'
 
 if [[ -n "$WSL_DISTRO_NAME" ]]; then
     # Remove windows reference to pyenv as windows path variables are put into WSL path
@@ -127,17 +128,19 @@ if [[ -n "$WSL_DISTRO_NAME" ]]; then
     PATH=$(echo $PATH | sed -e 's|/mnt/c/Users/johan/.pyenv/pyenv-win/bin\:||')
 
     # Make symbolic links to onedrive folders often used
-    ln -sf /mnt/c/Users/johan/OneDrive $HOME
-    ln -sf OneDrive/Desktop $HOME
+    #ln -sf /mnt/c/Users/johan/OneDrive $HOME
+    #ln -sf OneDrive/Desktop $HOME
 fi
 
 export MAVEN_HOME=$MAVEN_HOME
 export JAVA_HOME=$JAVA_HOME
-export PATH=$SCRIPTS:$SCRIPTS_US:$JAVA_HOME/bin:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH
+export PATH=$SCRIPTS:$SCRIPTS_US:$JAVA_HOME/bin:$MAVEN_HOME/bin:$R_HOME:$OC:$PATH:$PYTHON_BIN
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv virtualenv-init -)"
 
-alias keepassxc-cli="/Applications/KeePassXC.app/Contents/MacOS/keepassxc-cli"
-alias sed="gsed"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

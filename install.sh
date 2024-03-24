@@ -15,10 +15,14 @@ if [ $osChoice == "1" ]; then
     sudo apt upgrade -y
 
     #install git and curl (if needed)
-    sudo apt install -y git curl vim screen tmux zsh python-is-python3 pandoc git-lfs exiftool
+    sudo apt install -y git curl vim screen tmux zsh python-is-python3 pandoc git-lfs exiftool libssl-dev liblzma-dev tk-dev
 
     #install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+    # install PyEnv
+    sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    curl https://pyenv.run | bash
 
     # Install Azure CLI
     curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
@@ -91,3 +95,7 @@ if [ $timeTrackerChoice == "Y" ]; then
     crontab mycron
     rm mycron
 fi
+
+# Install Node Version Manager (nvm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+nvm install node
