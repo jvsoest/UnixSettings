@@ -5,7 +5,8 @@ docker run --rm -d \
     -p 80:80 \
     -e "SERVER_URL=$1" \
     -e "API_PATH=/api" \
-    harbor2.vantage6.ai/infrastructure/ui
+    ghcr.io/maastrichtu-biss/vantage6-ui:merged-dashboard
+#    harbor2.vantage6.ai/infrastructure/ui:petronas
 
 echo 'attempt to open http://localhost/'
 python -m webbrowser http://localhost/
